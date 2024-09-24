@@ -1808,6 +1808,10 @@ function wp_start_scraping_edited_file_errors() {
 	$nonce = wp_unslash( $_REQUEST['wp_scrape_nonce'] );
 
 	if ( get_transient( 'scrape_key_' . $key ) !== $nonce ) {
+		return;
+	}
+
+	if ( get_transient( 'scrape_key_' . $key ) !== $nonce ) {
 		echo "###### wp_scraping_result_start:$key ######";
 		echo wp_json_encode(
 			array(
